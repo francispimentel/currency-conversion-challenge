@@ -1,0 +1,17 @@
+spring:
+  h2.console.enabled: true
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    properties.hibernate.format_sql: true
+
+exchange-rate:
+  minutes-to-expire: 30
+  provider:
+    url: http://api.exchangeratesapi.io/latest?base=EUR&access_key={ACCESS_KEY}
+    access-key: 02deded029474875fc73083da842ba9e
