@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import static java.lang.String.format;
 
@@ -21,6 +22,12 @@ public class ControllerExceptionAdvisor {
     @ExceptionHandler(value = MissingServletRequestParameterException.class)
     protected ResponseEntity<DefaultResponse> missingParameters(MissingServletRequestParameterException ex) {
         DefaultResponse response = new DefaultResponse(HttpStatus.BAD_REQUEST.value(), format("Please provide '%s' as URL parameter.", ex.getParameterName()));
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(value = MethodArgumentTypeMismatchException.class)
+    protected ResponseEntity<DefaultResponse> parameterIsOfWrongType(MethodArgumentTypeMismatchException ex) {
+        DefaultResponse response = new DefaultResponse(HttpStatus.BAD_REQUEST.value(), format("Provided value '%s' for parameter '%s' is invalid.", ex.getValue(), ex.getName()));
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 

@@ -64,7 +64,7 @@ public class GetExchangeRate {
         return rates.stream()
                 .filter(x -> x.getCurrency().equalsIgnoreCase(currency))
                 .map(EURConversionRate::getExchangeRate).findAny()
-                .orElseThrow(() -> new BusinessException(format("API does not support conversions of currency %s.", currency)));
+                .orElseThrow(() -> new BusinessException(format("API does not support conversions of currency code '%s'.", currency)));
     }
 
     /**
