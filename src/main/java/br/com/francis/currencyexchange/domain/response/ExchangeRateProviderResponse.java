@@ -1,4 +1,4 @@
-package br.com.francis.currencyexchange.gateway.database.entity;
+package br.com.francis.currencyexchange.domain.response;
 
 import lombok.Data;
 

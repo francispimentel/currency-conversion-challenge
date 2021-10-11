@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 @Component
 @RequiredArgsConstructor
@@ -17,6 +16,7 @@ public class ConvertCurrency {
 
     /**
      * Performs the conversion based on obtained exchanged rate and persists transaction on database.
+     *
      * @param userID
      * @param originCurrency
      * @param destinationCurrency

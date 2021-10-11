@@ -1,7 +1,7 @@
 package br.com.francis.currencyexchange.usecase;
 
 import br.com.francis.currencyexchange.gateway.database.entity.EURConversionRate;
-import br.com.francis.currencyexchange.gateway.database.entity.ExchangeRateProviderResponse;
+import br.com.francis.currencyexchange.domain.response.ExchangeRateProviderResponse;
 import br.com.francis.currencyexchange.gateway.database.repository.EURConversionRateRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,6 +27,9 @@ public class UpdateExchangeRates {
     @Value("${exchange-rate.provider.access-key}")
     private String EXCHANGE_RATE_PROVIDER_ACCESS_KEY;
 
+    /**
+     * Updates exchange rates from external source and persists it into database
+     */
     public void execute() {
         RestTemplate restTemplate = new RestTemplate();
         String baseURL = UriComponentsBuilder
