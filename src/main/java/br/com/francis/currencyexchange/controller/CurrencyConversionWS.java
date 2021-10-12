@@ -2,6 +2,7 @@ package br.com.francis.currencyexchange.controller;
 
 import br.com.francis.currencyexchange.domain.response.CurrencyConversionResponse;
 import br.com.francis.currencyexchange.usecase.ConvertCurrency;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ public class CurrencyConversionWS {
 
     private final ConvertCurrency convertCurrency;
 
+    @ApiOperation(value = "Converts monetary value from one currency to another.")
     @GetMapping
     public CurrencyConversionResponse convertCurrency(@RequestParam Long userID, @RequestParam String originCurrency, @RequestParam String destinationCurrency,
                                                       @RequestParam BigDecimal value) {
